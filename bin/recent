@@ -1,0 +1,13 @@
+#!/bin/sh
+
+sort -t'|' -k3,3n ~/.z | tail -15 | perl -F'\|' -an -e '
+our $maxlen=40;
+my $date = localtime($F[2]);
+my $dir = $F[0];
+$dir =~ s#^/panfs/pan1.be-md.ncbi.nlm.nih.gov#-PANFS    #;
+$dir =~ s#^-PANFS    /bacterial_pathogens/backup#-PDBACKUP #;
+$dir =~ s#^-PANFS    /gpipe/bacterial_pipeline#-PGAP     #;
+$dir =~ s#^/home/aprasad#-HOME     #;
+printf "$date %5i %s\n", $F[1], $dir;
+#print join("\t", @F), "\n";
+'
