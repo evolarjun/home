@@ -1,0 +1,45 @@
+#!/bin/env perl
+#
+#
+# This software/database is ''United States Government Work'' under the terms of the
+# United States Copyright Act. It was written as part of the authors' official duties for
+# the United States Government and thus cannot be copyrighted. This software/database is
+# freely available to the public for use without a copyright notice. Restrictions cannot
+# be placed on its present or future use.
+# 
+# Although all reasonable efforts have been taken to ensure the accuracy and reliability
+# of the software and data, the National Human Genome Research Institute (NHGRI) and the
+# U.S. Government does not and cannot warrant the performance or results that may be
+# obtained by using this software or data.  NHGRI and the U.S. Government disclaims all
+# warranties as to performance, merchantability or fitness for any particular purpose.
+
+if (@ARGV) {
+    foreach my $time (@ARGV) {
+        print secs2hms($time), "\n";
+    }
+} else {
+    while (<>) {
+        print secs2hms($_), "\n";
+    }
+}
+
+sub secs2hms {
+    my $secs = shift;
+    my $str = '';
+    if ($secs < 0) {
+        $str = '- ';
+        $secs = 0-$secs;
+    }
+    if ($secs > 60 * 60 * 24) {
+        $str .= (int($secs / 86400)) . " days "
+            . (int(($secs % (60*60*24)) / 3600)) . " hours " 
+            . (int(($secs % 3600) / 60)) . " minutes "
+            . (int($secs % 60)) . " seconds";
+    } else {
+        $str .= (int($secs / 3600)) . " hours " 
+            . (int(($secs % 3600) / 60)) . " minutes "
+            . (int($secs % 60)) . " seconds";
+    }
+    return $str;
+}
+
