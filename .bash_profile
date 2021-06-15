@@ -73,6 +73,7 @@ R_HISTSIZE=32768  # make history file big
 
 # path
 add_path first "$HOME/bin"
+add_path "$HOME/.iterm2"
 
 # HOST is used below (may be altered below)
 HOST=$HOSTNAME
