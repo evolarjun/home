@@ -103,4 +103,5 @@ fi
 source $HOME/bin/z.sh
 add_dir MANPATH ~/man
 
-
+# for my standard perl modules
+add_dir PERL5LIB $HOME/lib/perl5
