@@ -1,0 +1,3 @@
+#!/bin/sh
+
+ps axuf | egrep -v "pu[x]|egre[p] \-v|grep -E $1|egrep $1" | egrep "$1|PI[D]" --color=auto
