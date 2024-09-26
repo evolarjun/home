@@ -7,6 +7,7 @@ alias Head='head'
 alias Less='less'
 alias pgrep='grep -P'
 alias ssh='ssh -Y'
+alias gits='git fetch && git status -uno'
 
 #############################
 # add_dir - add a directory to any of the directory requiring shell variables
