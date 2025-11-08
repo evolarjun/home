@@ -26,7 +26,7 @@ set timeout timeoutlen=1000  " Let you wait longer before typing something
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :wq<CR>
 " Insert date with underline
-nnoremap <Leader>d :put=strftime('%c')A<CR>--------------------------<CR><ESC>
+nnoremap <Leader>d :put=strftime('%F')<CR>A<CR>-----------<CR><ESC>
 " Put quotes around a word
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
