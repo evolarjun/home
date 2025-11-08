@@ -1,4 +1,4 @@
-# home - basic setup for cloud VMs or other new machines
+# home - minimal setup for cloud VMs or other new machines
 
 Min 10 gig drive
 ```
