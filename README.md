@@ -20,4 +20,6 @@ Setup scripts
 
 ---
 To Do:
-- Add compilation option for tabjoin
+- Add compilation option and tabjoin
+- Add fagrep
+- Add N50.pl, fasta_count, fqn50 and fan50
