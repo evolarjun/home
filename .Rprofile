@@ -82,5 +82,5 @@ if (!".env" %in% search()) {
     .env$setwidth <- function() { options(width=system2('tput', 'cols', stdout=TRUE)) }
 
 # get all my functions above into current namespace
-    attach(.env)
+    attach(.env, warn.conflicts=FALSE)
 }
