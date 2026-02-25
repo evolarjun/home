@@ -33,7 +33,8 @@ options("repos" = c(CRAN = "https://cran.rstudio.com/"))
 if (!".env" %in% search()) { 
     .env <- new.env()
 
-    .env$tabout <- function(x, filename, quote=F, row.names=F, sep="\t", rotate=TRUE, ...) {
+    .env$tabout <- function(x, filename, quote=F, row.names=F, sep="\t", rotate=TRUE, 
+                            na="", ...) {
 	  old.filename <- filename
 	  if (!rotate) {
 		write.table(x, file=filename, quote=quote, row.names=row.names, sep=sep, ...)
@@ -46,7 +47,8 @@ if (!".env" %in% search()) {
 		  n <- n + 1
 		  newfilename <- paste0(filename, '.', n)
 		}
-		write.table(x, file=newfilename, quote=quote, row.names=row.names, sep=sep, ...)
+		write.table(x, file=newfilename, quote=quote, row.names=row.names, sep=sep,
+                    na=na, ...)
 		if (n > 1) {
 		  x <- tools::md5sum(c(filename, newfilename))
 		  if (!is.na(x[1]) & x[1] == x[2]) {
