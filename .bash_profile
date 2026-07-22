@@ -58,6 +58,36 @@ function add_path {
     add_dir PATH $@
 }            
 
+##############################
+# tabjoin - print tab-delimited data
+# usage: tabjoin [--] <arg1> <arg2> <arg3>
+# -n does not print newline at end
+##############################
+tabjoin() {
+    if [ $# -eq 0 ] && [ -t 0 ]; then
+        printf '\ntabjoin - joins arguments with tab characters and prints the result\nfollowed by a carriage return\nUsage: tabjoin [--] <arg1> <arg2> <arg3>\nPrints: <arg1>\\t<arg2>\\t<arg3>\\n\n\nuse -n to suppress trailing \\n\nuse -- to suppress option handling for any parameters after that\n'
+        return 1
+    fi
+
+    local term=$'\n'
+    local got_doubledash=0
+    local args=()
+
+    for arg in "$@"; do
+        if [ $got_doubledash -eq 0 ] && [ "$arg" = "-n" ]; then
+            term=""
+            continue
+        elif [ $got_doubledash -eq 0 ] && [ "$arg" = "--" ]; then
+            got_doubledash=1
+            continue
+        fi
+        args+=("$arg")
+    done
+
+    local IFS=$'\t'
+    printf "%s%s" "${args[*]}" "$term"
+}
+
 
 ### environment variables
 # history
